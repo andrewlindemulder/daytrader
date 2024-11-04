@@ -4,7 +4,7 @@ import requests
 
 with st.form("my_form"):
     ticker = st.text_input("Enter the stock ticker")
-    limit = st.number_input("Enter your age", step=4)
+    limit = st.number_input("Enter your age")
     submit_button = st.form_submit_button("Submit Order")
 
 if submit_button:

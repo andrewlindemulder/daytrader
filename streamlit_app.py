@@ -7,6 +7,8 @@ from alpaca.trading.requests import LimitOrderRequest
 from alpaca.trading.enums import OrderSide, TimeInForce
 from alpaca.trading.stream import TradingStream
 
+apikey=st.secrets["alpaca_api_key"]
+apisecret=st.secrets["alpaca_api_secret"]
 trading_stream = TradingStream(apikey, apisecret, paper=False)
 
 async def update_handler(data):

@@ -53,4 +53,4 @@ if submit_button:
         limit_order = trading_client.submit_order(
                 order_data=limit_order_data
               )
-        st.write(limit_order) 
+        # st.write(limit_order) 

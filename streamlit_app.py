@@ -19,7 +19,7 @@ if submit_button:
     else:
         apikey=st.secrets["alpaca_api_key"]
         apisecret=st.secrets["alpaca_api_secret"]
-        trading_client = TradingClient(apikey, apisecret, paper=True)
+        trading_client = TradingClient(apikey, apisecret, paper=False)
         account = trading_client.get_account()
 
         purchase_qty = math.floor((float(account.buying_power) / float(limit)) * 100)/100.0

@@ -9,8 +9,13 @@ with st.form("my_form"):
     submit_button = st.form_submit_button("Submit Order")
 
 if submit_button:
-    apikey=st.secrets["alpaca_api_key"]
-    apisecret=st.secrets["alpaca_api_secret"]
-    trading_client = TradingClient(apikey, apisecret, paper=False)
-    account = trading_client.get_account()
-    st.write(account)
+    if not ticker:
+        st.write("Ticker is required")
+    if not limit:
+        st.write("Limit is required")
+    else:
+        apikey=st.secrets["alpaca_api_key"]
+        apisecret=st.secrets["alpaca_api_secret"]
+        trading_client = TradingClient(apikey, apisecret, paper=False)
+        account = trading_client.get_account()
+        st.write(account)

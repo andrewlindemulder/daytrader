@@ -25,9 +25,9 @@ if submit_button:
         purchase_qty = math.floor((float(account.buying_power) / float(limit)) * 100)/100.0
 
         limit_order_data = LimitOrderRequest(
-                    symbol="TSLA",
-                    limit_price=100,
-                    notional=200,
+                    symbol=ticker,
+                    limit_price=limit,
+                    notional=account.buying_power,
                     side=OrderSide.BUY,
                     time_in_force=TimeInForce.DAY
                    )

@@ -9,6 +9,8 @@ with st.form("my_form"):
     submit_button = st.form_submit_button("Submit Order")
 
 if submit_button:
+    st.write(st.secrets["alpaca_api_key"])
+    st.write(st.secrets["alpaca_api_secret"])
     trading_client = TradingClient(st.secrets["alpaca_api_key"], st.secrets["alpaca_api_secret"])
     account = trading_client.get_account()
     st.write(account)

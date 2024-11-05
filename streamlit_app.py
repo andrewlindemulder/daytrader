@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
+import math
 from alpaca.trading.client import TradingClient
 
 with st.form("my_form"):
@@ -18,4 +19,5 @@ if submit_button:
         apisecret=st.secrets["alpaca_api_secret"]
         trading_client = TradingClient(apikey, apisecret, paper=False)
         account = trading_client.get_account()
-        st.write(account.buying_power)
+        purchase_qty = math.floor(account.buying_power / ticker)
+        st.write(purchase_qty)

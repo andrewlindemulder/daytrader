@@ -18,4 +18,4 @@ if submit_button:
         apisecret=st.secrets["alpaca_api_secret"]
         trading_client = TradingClient(apikey, apisecret, paper=False)
         account = trading_client.get_account()
-        st.write(account['buying_power'])
+        st.write(account.buying_power)

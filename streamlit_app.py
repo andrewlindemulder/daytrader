@@ -5,6 +5,22 @@ import math
 from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import LimitOrderRequest
 from alpaca.trading.enums import OrderSide, TimeInForce
+from alpaca.trading.stream import TradingStream
+
+trading_stream = TradingStream(apikey, apisecret, paper=False)
+
+async def update_handler(data):
+    # trade updates will arrive in our async handler
+    st.write(data)
+    # print(data)
+
+    # subscribe to trade updates and supply the handler as a parameter
+    trading_stream.subscribe_trade_updates(update_handler)
+
+    # start our websocket streaming
+    trading_stream.run()
+
+
 
 with st.form("my_form"):
     ticker = st.text_input("Enter the stock ticker")
@@ -35,4 +51,4 @@ if submit_button:
         limit_order = trading_client.submit_order(
                 order_data=limit_order_data
               )
-        st.write(limit_order)
+        st.write(limit_order) 
